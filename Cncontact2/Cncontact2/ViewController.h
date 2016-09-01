@@ -12,9 +12,8 @@
 @interface ViewController : UIViewController
 
 
-@property(nonatomic,strong)NSMutableArray* Phonenumber;
-@property(nonatomic,strong)NSMutableArray* contactname;
-@property(nonatomic,strong)NSMutableArray* allcontact;
+
+@property(nonatomic, strong)NSMutableArray *contactList;
 
 
 

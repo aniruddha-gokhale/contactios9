@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470AA6F51D784338003E0FB0 /* AddNewContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 470AA6F41D784338003E0FB0 /* AddNewContactVC.m */; };
 		47EC7F521CBE5FE200A048EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7F511CBE5FE200A048EE /* main.m */; };
 		47EC7F551CBE5FE200A048EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7F541CBE5FE200A048EE /* AppDelegate.m */; };
 		47EC7F581CBE5FE200A048EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7F571CBE5FE200A048EE /* ViewController.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		470AA6F31D784338003E0FB0 /* AddNewContactVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewContactVC.h; sourceTree = "<group>"; };
+		470AA6F41D784338003E0FB0 /* AddNewContactVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewContactVC.m; sourceTree = "<group>"; };
 		47EC7F4D1CBE5FE200A048EE /* Cncontact2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cncontact2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47EC7F511CBE5FE200A048EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		47EC7F531CBE5FE200A048EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				47EC7F541CBE5FE200A048EE /* AppDelegate.m */,
 				47EC7F561CBE5FE200A048EE /* ViewController.h */,
 				47EC7F571CBE5FE200A048EE /* ViewController.m */,
+				470AA6F31D784338003E0FB0 /* AddNewContactVC.h */,
+				470AA6F41D784338003E0FB0 /* AddNewContactVC.m */,
 				47EC7F591CBE5FE200A048EE /* Main.storyboard */,
 				47EC7F5C1CBE5FE200A048EE /* Assets.xcassets */,
 				47EC7F5E1CBE5FE200A048EE /* LaunchScreen.storyboard */,
@@ -277,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				470AA6F51D784338003E0FB0 /* AddNewContactVC.m in Sources */,
 				47EC7F581CBE5FE200A048EE /* ViewController.m in Sources */,
 				47EC7F551CBE5FE200A048EE /* AppDelegate.m in Sources */,
 				47EC7F521CBE5FE200A048EE /* main.m in Sources */,

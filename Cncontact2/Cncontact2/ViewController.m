@@ -18,12 +18,12 @@
     
 }
 
--(NSMutableArray *) contactname{
-    if(!_contactname){
+-(NSMutableArray *) contactList{
+    if(!_contactList){
         
-        _contactname = [[NSMutableArray alloc]init];
+        _contactList = [[NSMutableArray alloc]init];
     }
-    return _contactname;
+    return _contactList;
 }
 
 
@@ -45,44 +45,35 @@
 
 -(void)fetchcontacts{
     
-    
     CNContactStore * store = [[CNContactStore alloc]init];
-        NSArray * keytoFetch =@[CNContactGivenNameKey,CNContactFamilyNameKey,CNContactPhoneNumbersKey];
-    
+    NSArray * keytoFetch =@[CNContactGivenNameKey,CNContactFamilyNameKey,CNContactPhoneNumbersKey];
     NSError *err = nil;
     NSString *containerId = store.defaultContainerIdentifier;
     NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId];
     NSArray *arrFetchedRecord  = [store unifiedContactsMatchingPredicate:predicate keysToFetch:keytoFetch error:&err];
-    
-    //NSLog(@"%@",err.description);
-    //NSLog(@"%@",arrFetchedRecord);
-    
     NSString *phone;
     NSMutableString *phonenumber;
     NSString *fullName;
     NSString *firstName;
     NSString *lastName;
-    NSMutableArray *contactNumbersArray;
-    
+    // NSMutableArray *contactNumbersArray=[[NSMutableArray alloc]init];
+    self.contactList=nil;
     for (int i=0;i<arrFetchedRecord.count;i++) {
         
         CNContact *contact=[arrFetchedRecord objectAtIndex:i];
-    
-          firstName = contact.givenName;
-          lastName =contact.familyName;
-            if (lastName == nil) {
-                fullName=[NSString stringWithFormat:@"%@",firstName];
-                
-            }else if (firstName == nil){
-                fullName=[NSString stringWithFormat:@"%@",lastName];
-            }
-            else{
-                fullName=[NSString stringWithFormat:@"%@ %@",firstName,lastName];
-               
-            }
         
-        
-        
+        firstName = contact.givenName;
+        lastName =contact.familyName;
+        if (lastName == nil) {
+            fullName=[NSString stringWithFormat:@"%@",firstName];
+            
+        }else if (firstName == nil){
+            fullName=[NSString stringWithFormat:@"%@",lastName];
+        }
+        else{
+            fullName=[NSString stringWithFormat:@"%@ %@",firstName,lastName];
+            
+        }
         for (CNLabeledValue *label in contact.phoneNumbers) {
             phone = [label.value stringValue];
             
@@ -97,27 +88,28 @@
                 if ([scanner scanCharactersFromSet:numbers intoString:&buffer])
                 {
                     [phonenumber appendString:buffer];
-                } 
-                else 
+                }
+                else
                 {
                     [scanner setScanLocation:([scanner scanLocation] + 1)];
                 }
             }
             
-            NSLog(@"%@", phonenumber);
             if ([phonenumber length] > 0) {
-                [contactNumbersArray addObject:phonenumber];
+                NSDictionary *personDict = [[NSDictionary alloc] initWithObjectsAndKeys: fullName,@"fullName",phonenumber,@"PhoneNumbers", nil];
+                [self.contactList addObject:personDict];
             }
         }
-
         
-        
-           NSDictionary *personDict = [[NSDictionary alloc] initWithObjectsAndKeys: fullName,@"fullName",phonenumber,@"PhoneNumbers", nil];
-        
-        
+    }
+    // sort alphabetically
+    [self.contactList sortUsingDescriptors:
+     [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"fullName"
+                                                            ascending:YES
+                                                             selector:@selector(caseInsensitiveCompare:)]]];
     
-        
-        [self.contactname addObject:personDict];
+    NSLog(@"%@",self.contactList);
+    
     
         
 }
@@ -125,14 +117,6 @@
         
 
     
-    NSLog(@"%@",self.contactname);
-   
-    
-
-
-}
-
-
 
 
 
